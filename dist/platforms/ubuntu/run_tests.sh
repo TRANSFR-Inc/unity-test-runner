@@ -53,6 +53,8 @@ if [ -n "$PRIVATE_REGISTRY_TOKEN" ]; then
   token = "$PRIVATE_REGISTRY_TOKEN"
   alwaysAuth = true
 EOF
+  # Some npm repositories (Azure Devops) require a user to be configred
+  # even if it isn't a valid one.
   if [ -n "$PRIVATE_REGISTRY_USER" ]; then
     cat >> "$UPM_CONFIG_TOML_PATH" <<EOF
   user = "$PRIVATE_REGISTRY_USER"
